@@ -1,6 +1,7 @@
 # Auto update script for USTChorus birthday database. It will read from and write to `birthday-table.ods`.
 # Before updating, paste the participants table into `input/participants-paste.txt`.
 # It is intended for the Mixed and Men's choir setup, and can DEFINITELY NOT handle duplicate names.
+# Remember to re-filter after table update if a filter is applied.
 
 import os
 from zipfile import ZipFile
