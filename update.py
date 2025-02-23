@@ -60,7 +60,7 @@ class BirthdayTable:
         )
 
     @staticmethod
-    def set_row_data(row: odf.element.Element, data: tuple[str, str, str, str]):
+    def set_row_data(row: odf.element.Element, data: 'tuple[str, str, str, str]'):
         row.childNodes.clear()
         # (name, birthday, mixedPart, menPart)
         for i in range(0, 4):
@@ -153,6 +153,7 @@ def get_participant_parts(filename: str):
                     current_group = 0
                 current_part = text[0]
             else:
+                text = text.strip('*')
                 if current_part == 'N':
                     print(f'WARN participant {text} is in unknown part.')
                 part_tuple = list(parts_map.get(text, ('', '')))
@@ -206,3 +207,5 @@ print(f'Making backup of the original table')
 make_table_backup(FILE_ODS, FILE_BACKUP)
 print(f'Writing results')
 data.write(FILE_ODS)
+
+print(f'IMPORTANT: The filters will not be updated. Please un-filter and re-filter the table manually.')
